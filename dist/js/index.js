@@ -65,8 +65,8 @@ class Calc {
 
   CalcSome(current, diplayValue) {
     const {firstNum} = current.dataset;
-    current.dataset.secondNum = diplayValue;
-    const {secondNum} = current.dataset;
+
+    const secondNum = diplayValue;
     console.log(secondNum);
     const operator = current.querySelector(
       `[data-state="selected"]`
