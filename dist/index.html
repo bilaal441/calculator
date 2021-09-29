@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="./js/index.js"></script>
+    <title>Frontend Mentor | Calculator app</title>
+  </head>
+  <body class="theme-1">
+    <main class="calc">
+      <header class="calc-header__container">
+        <div class="calc-title">calc</div>
+        <div class="calc-theme-container">
+          <nav class="calc-theme__nav">
+            <div class="calc-theme-num">
+              <div data-tap="theme-1" class="a toggler">1</div>
+              <div data-tap="theme-2" class="b toggler">2</div>
+              <div data-tap="theme-3" class="c toggler">3</div>
+            </div>
+            <div class="calc-theme-sel">
+              <div data-tap="theme-1" class="s-a toggler dot"></div>
+              <div data-tap="theme-2" class="s-b toggler dot"></div>
+              <div data-tap="theme-3" class="s-c toggler dot"></div>
+            </div>
+          </nav>
+          <div class="calc-theme__title">theme</div>
+        </div>
+      </header>
+      <section class="display">
+        <div class="display-screen">0</div>
+      </section>
+      <section class="keys-container">
+        <div data-type="number" class="key btn">7</div>
+        <div data-type="number" class="key btn">8</div>
+        <div data-type="number" class="key btn">9</div>
+        <div data-type="delete" class="key btn-del">del</div>
+        <div data-type="number" class="key btn">4</div>
+        <div data-type="number" class="key btn">5</div>
+        <div data-type="number" class="key btn">6</div>
+        <div data-type="operator" class="key btn .btn-plus">+</div>
+        <div data-type="number" class="key btn">1</div>
+        <div data-type="number" class="key btn">2</div>
+        <div data-type="number" class="key btn">3</div>
+        <div data-type="operator" class="key btn .btn-minus">-</div>
+        <div data-type="number" class="key btn btn-point">.</div>
+        <div data-type="number" class="key btn">0</div>
+        <div data-type="operator" class="key btn btn-divide">/</div>
+        <div data-type="operator" class="key btn btn-times">x</div>
+        <div class="key btn-reset">reset</div>
+        <div class="key btn-equals" data-type="equals">=</div>
+      </section>
+    </main>
+  </body>
+</html>
