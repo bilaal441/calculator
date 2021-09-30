@@ -44,21 +44,9 @@ class Calc {
       selected.dataset.state = "";
     }
 
-    if (type === "delete") {
-      if (diplayValue === "0") return;
-      const hasAttributeFirstNum = currentEl.hasAttribute("data-first-num");
-      const hasAttributeSecondtNum = currentEl.hasAttribute("data-second-num");
-      const second = [...diplayValue];
-      const firstNum = currentEl.hasAttribute("data-first-num")
-        ? [...currentEl.dataset.firstNum]
-        : 0;
-      if (!hasAttributeFirstNum && !hasAttributeSecondtNum)
-        this.deleteNum(second, 0);
-      else if (hasAttributeFirstNum && firstNum.join() !== second.join())
-        this.deleteNum(second, currentEl.dataset.firstNum);
-      else this.deleteNum(firstNum, 0, currentEl);
-      this.removeOperator(selected);
-    }
+    if (type === "delete") this.ifDelete(diplayValue, currentEl, selected);
+
+    if (type === "reset") this.rest(this.#screen, selected, currentEl);
 
     currentEl.dataset.prevKeyType = type;
   }
@@ -86,11 +74,28 @@ class Calc {
       : (this.#screen.textContent = `${diplayValue}${keyValue}`);
   }
   checkOperator(current, diplayValue, type, key) {
+    if (diplayValue === "0") return;
     current
       .querySelectorAll(`[data-type="${type}"]`)
       .forEach((el) => (el.dataset.state = ""));
     key.dataset.state = "selected";
     current.dataset.firstNum = diplayValue;
+  }
+
+  ifDelete(diplayValue, currentEl, selected) {
+    if (diplayValue === "0") return;
+    const hasAttributeFirstNum = currentEl?.hasAttribute("data-first-num");
+    const hasAttributeSecondtNum = currentEl?.hasAttribute("data-second-num");
+    const second = [...diplayValue];
+    const firstNum = currentEl.hasAttribute("data-first-num")
+      ? [...currentEl.dataset.firstNum]
+      : 0;
+    if (!hasAttributeFirstNum && !hasAttributeSecondtNum)
+      this.deleteNum(second, 0);
+    else if (hasAttributeFirstNum && firstNum.join() !== second.join())
+      this.deleteNum(second, currentEl.dataset.firstNum);
+    else this.deleteNum(firstNum, 0, currentEl);
+    this.removeOperator(selected);
   }
   removeOperator(selected) {
     selected !== null && selected?.getAttribute("data-state")
@@ -104,6 +109,11 @@ class Calc {
       ? (this.#screen.textContent = `${value}`)
       : (this.#screen.textContent = arr.join(""));
     if (el) el.dataset.firstNum = arr.splice(-1, 1);
+  }
+  rest(display, selected, el) {
+    this.removeOperator(selected);
+    display.textContent = "0";
+    el.dataset.firstNum = "";
   }
 }
 
