@@ -1,2 +1,3 @@
 # calculator
-calculator functionality
+calculator functionality live demo https://calculatesum.netlify.app/
+
